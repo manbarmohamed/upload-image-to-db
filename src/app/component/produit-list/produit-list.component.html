@@ -1,0 +1,16 @@
+<p>produit-list works!</p>
+
+<h2>Liste des Produits</h2>
+<div *ngFor="let produit of produits">
+  <h3>{{ produit.name }}</h3>
+  <p>{{ produit.description }}</p>
+  <img [src]="getProduitImageUrl(produit.id)" alt="{{ produit.name }}" *ngIf="produit.id">
+</div>
+
+<h3>Ajouter un Produit</h3>
+<form (ngSubmit)="onSubmit()">
+  <input [(ngModel)]="newProduit.name" name="name" placeholder="Nom" required>
+  <textarea [(ngModel)]="newProduit.description" name="description" placeholder="Description" required></textarea>
+  <input type="file" (change)="onFileSelected($event)" required>
+  <button type="submit">Ajouter</button>
+</form>
